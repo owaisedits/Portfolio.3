@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik Owais | Colorist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CSS VARIABLES & RESET === */
+        :root {
+            --bg-color: #050505;
+            --text-color: #f5f5f5;
+            --accent-color: #555;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* === TYPOGRAPHY & NEGATIVE SPACE === */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        .section-padding {
+            padding: 15vh 5vw;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #aaa;
+            margin-left: 10px; /* Offset for tracking alignment */
+        }
+
+        /* === PORTFOLIO SECTION === */
+        .portfolio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #111; /* Placeholder BG */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Replace background-color above with standard img setup when ready */
+        .project-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: opacity 0.8s ease, transform 1.2s ease;
+        }
+
+        .project-item:hover img {
+            opacity: 0.4;
+            transform: scale(1.03);
+        }
+
+        .project-title {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            pointer-events: none;
+        }
+
+        /* === BEFORE / AFTER SHOWCASE === */
+        .showcase-section {
+            padding-bottom: 20vh;
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Before/After Custom Element */
+        .ba-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            --position: 50%;
+        }
+
+        .ba-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* Temporary text for placeholders */
+        .placeholder-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.2);
+            font-family: var(--font-serif);
+            z-index: 1;
+        }
+
+        .ba-after {
+            clip-path: polygon(0 0, var(--position) 0, var(--position) 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .ba-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 0;
+            z-index: 4;
+            cursor: ew-resize;
+        }
+
+        .ba-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 40px;
+            height: 100vh;
+            background: transparent;
+            cursor: ew-resize;
+        }
+
+        .ba-line {
+            position: absolute;
+            top: 0;
+            left: var(--position);
+            width: 2px;
+            height: 100%;
+            background: white;
+            z-index: 3;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .ba-button {
+            position: absolute;
+            top: 50%;
+            left: var(--position);
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #050505;
+            z-index: 3;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ba-button::after {
+            content: "↔";
+            color: #050505;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Carousel Navigation Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 3rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-color);
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 10vh 4rem 5vh;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-title {
+            font-size: 0.9rem;
+            letter-spacing: 8px;
+            color: #888;
+            margin-bottom: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            font-size: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-links a {
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--text-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-availability {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            .section-padding { padding: 10vh 0; }
+            .portfolio-grid { gap: 5vh; }
+            .project-item { aspect-ratio: 4/5; border-radius: 0; }
+            .ba-container { aspect-ratio: 4/5; }
+            footer { padding: 8vh 2rem 4vh; }
+            .footer-links { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">OM</div>
+        <div class="nav-links">
+            <a href="#work">WORK</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>MALIK OWAIS</h1>
+        <p>COLORIST</p>
+    </section>
+
+    <section id="work" class="section-padding">
+        <div class="portfolio-grid">
+            
+            <div class="project-item">
+                <h2 class="project-title">Project 01</h2>
+            </div>
+
+            <div class="project-item">
+                <h2 class="project-title">Project 02</h2>
+            </div>
+
+            <div class="project-item">
+                <h2 class="project-title">Project 03</h2>
+            </div>
+
+            <div class="project-item">
+                <h2 class="project-title">Project 04</h2>
+            </div>
+
+            <div class="project-item">
+                <h2 class="project-title">Project 05</h2>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="showcase-section section-padding">
+        <div class="carousel-container">
+            
+            <div id="carousel-wrapper">
+                </div>
+
+            <div class="carousel-dots" id="carousel-dots">
+                </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-logo">OM</div>
+        <div class="footer-title">COLORIST</div>
+        
+        <div class="footer-links">
+            <a href="https://instagram.com/colorist_owais" target="_blank">Instagram</a>
+            <a href="mailto:work.w.owais@gmail.com">Email</a>
+        </div>
+
+        <p class="footer-availability">AVAILABLE WORLDWIDE</p>
+        <p class="footer-copyright">&copy; MALIK OWAIS</p>
+    </footer>
+
+
+    <script>
+        // 1. GENERATE BEFORE/AFTER CAROUSEL ITEMS
+        const totalSlides = 5;
+        const wrapper = document.getElementById('carousel-wrapper');
+        const dotsContainer = document.getElementById('carousel-dots');
+
+        for (let i = 0; i < totalSlides; i++) {
+            // Create Slide Wrapper
+            const slide = document.createElement('div');
+            slide.classList.add('carousel-slide');
+            if (i === 0) slide.classList.add('active');
+
+            // Insert B/A HTML Structure
+            slide.innerHTML = `
+                <div class="ba-container">
+                    <div class="placeholder-text">
+                        <span>Before</span>
+                        <span>After</span>
+                    </div>
+
+                    <img src="" class="ba-img ba-before" style="background: #111;">
+                    
+                    <img src="" class="ba-img ba-after" style="background: #2a2a2a;">
+                    
+                    <input type="range" min="0" max="100" value="50" class="ba-slider">
+                    <div class="ba-line"></div>
+                    <div class="ba-button"></div>
+                </div>
+            `;
+            wrapper.appendChild(slide);
+
+            // Create Navigation Dot
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.dataset.index = i;
+            dotsContainer.appendChild(dot);
+        }
+
+        // 2. BEFORE/AFTER SLIDER LOGIC
+        const baContainers = document.querySelectorAll('.ba-container');
+        
+        baContainers.forEach(container => {
+            const slider = container.querySelector('.ba-slider');
+            
+            slider.addEventListener('input', (e) => {
+                // Update CSS variable --position to move the mask and the line
+                container.style.setProperty('--position', `${e.target.value}%`);
+            });
+        });
+
+        // 3. CAROUSEL NAVIGATION LOGIC
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = this.dataset.index;
+
+                // Remove active class from all
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                // Add active class to clicked
+                slides[index].classList.add('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
