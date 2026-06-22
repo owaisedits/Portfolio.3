@@ -575,20 +575,33 @@
                 this.classList.add('active');
             });
         });
-        const heroSlides = document.querySelectorAll('.hero-slide');
-const heroDots = document.querySelectorAll('.hero-dot');
+       <script>
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
 
-let currentHero = 0;
+let current = 0;
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+
+    current = index;
+}
 
 setInterval(() => {
-    heroSlides[currentHero].classList.remove('active');
-    heroDots[currentHero].classList.remove('active');
+    let next = (current + 1) % slides.length;
+    showSlide(next);
+}, 2000);
 
-    currentHero = (currentHero + 1) % heroSlides.length;
-
-    heroSlides[currentHero].classList.add('active');
-    heroDots[currentHero].classList.add('active');
-}, 4000);
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showSlide(index);
+    });
+});
+</script>
     </script>
 </body>
 </html>
