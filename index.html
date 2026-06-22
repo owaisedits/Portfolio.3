@@ -507,14 +507,90 @@
         <p class="footer-copyright">&copy; MALIK OWAIS</p>
     </footer>
 
-        // 1. GENERATE BEFORE/AFTER CAROUSEL ITEMS
       <script>
+
+// BEFORE / AFTER SECTION
+
+const totalSlides = 5;
+const wrapper = document.getElementById('carousel-wrapper');
+const dotsContainer = document.getElementById('carousel-dots');
+
+for (let i = 0; i < totalSlides; i++) {
+
+    const slide = document.createElement('div');
+    slide.classList.add('carousel-slide');
+
+    if (i === 0) slide.classList.add('active');
+
+    slide.innerHTML = `
+        <div class="ba-container">
+            <div class="placeholder-text">
+                <span>Before</span>
+                <span>After</span>
+            </div>
+
+            <img src="" class="ba-img ba-before">
+            <img src="" class="ba-img ba-after">
+
+            <input type="range" min="0" max="100" value="50" class="ba-slider">
+
+            <div class="ba-line"></div>
+            <div class="ba-button"></div>
+        </div>
+    `;
+
+    wrapper.appendChild(slide);
+
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+
+    if (i === 0) dot.classList.add('active');
+
+    dot.dataset.index = i;
+    dotsContainer.appendChild(dot);
+}
+
+const baContainers = document.querySelectorAll('.ba-container');
+
+baContainers.forEach(container => {
+
+    const slider = container.querySelector('.ba-slider');
+
+    slider.addEventListener('input', (e) => {
+        container.style.setProperty('--position', `${e.target.value}%`);
+    });
+
+});
+
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+
+dots.forEach(dot => {
+
+    dot.addEventListener('click', function() {
+
+        const index = this.dataset.index;
+
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+
+        slides[index].classList.add('active');
+        this.classList.add('active');
+
+    });
+
+});
+
+
+// HERO SLIDER
+
 const heroSlides = document.querySelectorAll('.hero-slide');
 const heroDots = document.querySelectorAll('.hero-dot');
 
 let currentHero = 0;
 
 function showHero(index) {
+
     heroSlides.forEach(slide => slide.classList.remove('active'));
     heroDots.forEach(dot => dot.classList.remove('active'));
 
@@ -525,15 +601,21 @@ function showHero(index) {
 }
 
 setInterval(() => {
+
     const next = (currentHero + 1) % heroSlides.length;
     showHero(next);
+
 }, 2000);
 
 heroDots.forEach((dot, index) => {
+
     dot.addEventListener('click', () => {
         showHero(index);
     });
+
 });
+
 </script>
+
 </body>
 </html>
