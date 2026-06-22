@@ -506,180 +506,33 @@
         <p class="footer-copyright">&copy; MALIK OWAIS</p>
     </footer>
 
-
-    <script>
         // 1. GENERATE BEFORE/AFTER CAROUSEL ITEMS
-        const totalSlides = 5;
-        const wrapper = document.getElementById('carousel-wrapper');
-        const dotsContainer = document.getElementById('carousel-dots');
-
-        for (let i = 0; i < totalSlides; i++) {
-            // Create Slide Wrapper
-            const slide = document.createElement('div');
-            slide.classList.add('carousel-slide');
-            if (i === 0) slide.classList.add('active');
-
-            // Insert B/A HTML Structure
-            slide.innerHTML = `
-                <div class="ba-container">
-                    <div class="placeholder-text">
-                        <span>Before</span>
-                        <span>After</span>
-                    </div>
-
-                    <img src="" class="ba-img ba-before" style="background: #111;">
-                    
-                    <img src="" class="ba-img ba-after" style="background: #2a2a2a;">
-                    
-                    <input type="range" min="0" max="100" value="50" class="ba-slider">
-                    <div class="ba-line"></div>
-                    <div class="ba-button"></div>
-                </div>
-            `;
-            wrapper.appendChild(slide);
-
-            // Create Navigation Dot
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.dataset.index = i;
-            dotsContainer.appendChild(dot);
-        }
-
-        // 2. BEFORE/AFTER SLIDER LOGIC
-        const baContainers = document.querySelectorAll('.ba-container');
-        
-        baContainers.forEach(container => {
-            const slider = container.querySelector('.ba-slider');
-            
-            slider.addEventListener('input', (e) => {
-                // Update CSS variable --position to move the mask and the line
-                container.style.setProperty('--position', `${e.target.value}%`);
-            });
-        });
-
-        // 3. CAROUSEL NAVIGATION LOGIC
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const index = this.dataset.index;
-
-                // Remove active class from all
-                slides.forEach(s => s.classList.remove('active'));
-                dots.forEach(d => d.classList.remove('active'));
-
-                // Add active class to clicked
-                slides[index].classList.add('active');
-                this.classList.add('active');
-            });
-        });
       <script>
-    // BEFORE / AFTER CAROUSEL CREATION
-    const totalSlides = 5;
-    const wrapper = document.getElementById('carousel-wrapper');
-    const dotsContainer = document.getElementById('carousel-dots');
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
 
-    for (let i = 0; i < totalSlides; i++) {
+let currentHero = 0;
 
-        const slide = document.createElement('div');
-        slide.classList.add('carousel-slide');
+function showHero(index) {
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    heroDots.forEach(dot => dot.classList.remove('active'));
 
-        if (i === 0) slide.classList.add('active');
+    heroSlides[index].classList.add('active');
+    heroDots[index].classList.add('active');
 
-        slide.innerHTML = `
-            <div class="ba-container">
-                <div class="placeholder-text">
-                    <span>Before</span>
-                    <span>After</span>
-                </div>
+    currentHero = index;
+}
 
-                <img src="" class="ba-img ba-before" style="background:#111;">
-                <img src="" class="ba-img ba-after" style="background:#2a2a2a;">
+setInterval(() => {
+    const next = (currentHero + 1) % heroSlides.length;
+    showHero(next);
+}, 2000);
 
-                <input type="range" min="0" max="100" value="50" class="ba-slider">
-
-                <div class="ba-line"></div>
-                <div class="ba-button"></div>
-            </div>
-        `;
-
-        wrapper.appendChild(slide);
-
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-
-        if (i === 0) dot.classList.add('active');
-
-        dot.dataset.index = i;
-        dotsContainer.appendChild(dot);
-    }
-
-    // BEFORE / AFTER SLIDER
-    const baContainers = document.querySelectorAll('.ba-container');
-
-    baContainers.forEach(container => {
-        const slider = container.querySelector('.ba-slider');
-
-        slider.addEventListener('input', (e) => {
-            container.style.setProperty('--position', `${e.target.value}%`);
-        });
+heroDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showHero(index);
     });
-
-    // BEFORE / AFTER DOTS
-    const carouselSlides = document.querySelectorAll('.carousel-slide');
-    const carouselDots = document.querySelectorAll('.dot');
-
-    carouselDots.forEach(dot => {
-        dot.addEventListener('click', function() {
-
-            const index = this.dataset.index;
-
-            carouselSlides.forEach(s => s.classList.remove('active'));
-            carouselDots.forEach(d => d.classList.remove('active'));
-
-            carouselSlides[index].classList.add('active');
-            this.classList.add('active');
-        });
-    });
-
-    // HERO SLIDER
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    const heroDots = document.querySelectorAll('.hero-dot');
-
-    let currentHero = 0;
-
-    function showHero(index) {
-
-        heroSlides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-
-        heroDots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-
-        heroSlides[index].classList.add('active');
-        heroDots[index].classList.add('active');
-
-        currentHero = index;
-    }
-
-    setInterval(() => {
-
-        const next = (currentHero + 1) % heroSlides.length;
-        showHero(next);
-
-    }, 2000);
-
-    heroDots.forEach((dot, index) => {
-
-        dot.addEventListener('click', () => {
-            showHero(index);
-        });
-
-    });
-    </script>
+});
+</script>
 </body>
 </html>
