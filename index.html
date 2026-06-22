@@ -582,8 +582,8 @@ const heroDots = document.querySelectorAll('.hero-dot');
 let current = 0;
 
 function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    heroDots.forEach(dot => dot.classList.remove('active'));
 
     slides[index].classList.add('active');
     dots[index].classList.add('active');
