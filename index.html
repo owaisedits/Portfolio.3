@@ -125,8 +125,13 @@
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
+    position:absolute;
+    left:50%;
+    bottom:60px;
+    transform:translateX(-50%);
+    z-index:10;
+    text-align:center;
+    width:100%;
 }
 
 .hero::after{
@@ -138,9 +143,9 @@
 
 .hero-dots{
     display:flex;
-    gap:10px;
+    gap:12px;
     justify-content:center;
-    margin-top:20px;
+    margin-top:25px;
 }
 
 .hero-dot{
