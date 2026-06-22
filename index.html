@@ -107,7 +107,52 @@
             color: #aaa;
             margin-left: 10px; /* Offset for tracking alignment */
         }
+.hero-slider{
+    position:absolute;
+    inset:0;
+}
 
+.hero-slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+}
+
+.hero-slide.active{
+    opacity:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+}
+
+.hero-dots{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.hero-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+}
+
+.hero-dot.active{
+    background:white;
+}
         /* === PORTFOLIO SECTION === */
         .portfolio-grid {
             display: flex;
