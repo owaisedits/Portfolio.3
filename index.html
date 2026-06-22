@@ -87,13 +87,10 @@
 
         /* === HERO SECTION === */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
 
         .hero h1 {
             font-size: clamp(3rem, 10vw, 8rem);
@@ -383,9 +380,25 @@
     </nav>
 
     <section class="hero">
+
+    <div class="hero-slider">
+        <img src="hero1.jpg" class="hero-slide active">
+        <img src="hero2.jpg" class="hero-slide">
+        <img src="hero3.jpg" class="hero-slide">
+    </div>
+
+    <div class="hero-content">
         <h1>MALIK OWAIS</h1>
         <p>COLORIST</p>
-    </section>
+
+        <div class="hero-dots">
+            <span class="hero-dot active"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+        </div>
+    </div>
+
+</section>
 
     <section id="work" class="section-padding">
         <div class="portfolio-grid">
