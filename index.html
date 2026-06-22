@@ -592,11 +592,11 @@ function showSlide(index) {
 }
 
 setInterval(() => {
-    let next = (current + 1) % slides.length;
+    let next = (current + 1) % heroSlides.length;
     showSlide(next);
 }, 2000);
 
-dots.forEach((dot, index) => {
+heroDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         showSlide(index);
     });
