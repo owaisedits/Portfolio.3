@@ -585,8 +585,8 @@ function showSlide(index) {
     heroSlides.forEach(slide => slide.classList.remove('active'));
     heroDots.forEach(dot => dot.classList.remove('active'));
 
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
+    heroSlides[index].classList.add('active');
+    heroDots[index].classList.add('active');
 
     current = index;
 }
