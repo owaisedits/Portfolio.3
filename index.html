@@ -570,6 +570,20 @@
                 this.classList.add('active');
             });
         });
+        const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
+
+let currentHero = 0;
+
+setInterval(() => {
+    heroSlides[currentHero].classList.remove('active');
+    heroDots[currentHero].classList.remove('active');
+
+    currentHero = (currentHero + 1) % heroSlides.length;
+
+    heroSlides[currentHero].classList.add('active');
+    heroDots[currentHero].classList.add('active');
+}, 4000);
     </script>
 </body>
 </html>
