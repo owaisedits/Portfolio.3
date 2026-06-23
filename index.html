@@ -511,11 +511,17 @@
 
 // BEFORE / AFTER SECTION
 
-const totalSlides = 5;
+const comparisons = [
+    ["before1.jpg", "after1.jpg"],
+    ["before2.jpg", "after2.jpg"],
+    ["before3.jpg", "after3.jpg"],
+    ["before4.jpg", "after4.jpg"],
+    ["before5.jpg", "after5.jpg"]
+];
 const wrapper = document.getElementById('carousel-wrapper');
 const dotsContainer = document.getElementById('carousel-dots');
 
-for (let i = 0; i < totalSlides; i++) {
+for (let i = 0; i < comparisons.length; i++) {
 
     const slide = document.createElement('div');
     slide.classList.add('carousel-slide');
@@ -529,8 +535,8 @@ for (let i = 0; i < totalSlides; i++) {
                 <span>After</span>
             </div>
 
-           <img src="Project 2 before.jpg" class="ba-img ba-before">
-<img src="Project 2.jpg" class="ba-img ba-after">
+           <img src="${comparisons[i][0]}" class="ba-img ba-before">
+<img src="${comparisons[i][1]}" class="ba-img ba-after">
 
             <input type="range" min="0" max="100" value="50" class="ba-slider">
 
