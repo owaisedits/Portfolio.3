@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Highlights | Malik Owais</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+font-family:'Space Grotesk',sans-serif;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:2rem 4rem;
+display:flex;
+justify-content:space-between;
+z-index:100;
+background:rgba(5,5,5,.8);
+backdrop-filter:blur(10px);
+}
+
+.logo{
+color:white;
+font-size:1.4rem;
+font-weight:600;
+}
+
+.nav-links{
+display:flex;
+gap:2rem;
+}
+
+.nav-links a{
+color:white;
+font-size:.9rem;
+letter-spacing:2px;
+}
+
+.hero{
+height:25vh;
+display:flex;
+align-items:end;
+justify-content:center;
+padding-bottom:40px;
+}
+
+.hero h1{
+color:white;
+font-size:clamp(2rem,6vw,5rem);
+letter-spacing:4px;
+}
+
+.highlights-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+width:100%;
+}
+
+.highlight{
+aspect-ratio:9/16;
+overflow:hidden;
+position:relative;
+}
+
+.highlight img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.highlight:hover img{
+transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+.highlights-grid{
+grid-template-columns:1fr;
+}
+
+nav{
+padding:1.5rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">OM</div>
+
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="index.html#work">WORK</a>
+<a href="#">HIGHLIGHTS</a>
+<a href="index.html#contact">CONTACT</a>
+</div>
+
+</nav>
+
+<section class="hero">
+<h1>HIGHLIGHTS</h1>
+</section>
+
+<div class="highlights-grid">
+
+<div class="highlight"><img src="highlight1.jpg"></div>
+<div class="highlight"><img src="highlight2.jpg"></div>
+
+<div class="highlight"><img src="highlight3.jpg"></div>
+<div class="highlight"><img src="highlight4.jpg"></div>
+
+<div class="highlight"><img src="highlight5.jpg"></div>
+<div class="highlight"><img src="highlight6.jpg"></div>
+
+<div class="highlight"><img src="highlight7.jpg"></div>
+<div class="highlight"><img src="highlight8.jpg"></div>
+
+<div class="highlight"><img src="highlight9.jpg"></div>
+<div class="highlight"><img src="highlight10.jpg"></div>
+
+<div class="highlight"><img src="highlight11.jpg"></div>
+<div class="highlight"><img src="highlight12.jpg"></div>
+
+<div class="highlight"><img src="highlight13.jpg"></div>
+<div class="highlight"><img src="highlight14.jpg"></div>
+
+<div class="highlight"><img src="highlight15.jpg"></div>
+<div class="highlight"><img src="highlight16.jpg"></div>
+
+<div class="highlight"><img src="highlight17.jpg"></div>
+<div class="highlight"><img src="highlight18.jpg"></div>
+
+<div class="highlight"><img src="highlight19.jpg"></div>
+<div class="highlight"><img src="highlight20.jpg"></div>
+
+<div class="highlight"><img src="highlight21.jpg"></div>
+<div class="highlight"><img src="highlight22.jpg"></div>
+
+<div class="highlight"><img src="highlight23.jpg"></div>
+<div class="highlight"><img src="highlight24.jpg"></div>
+
+<div class="highlight"><img src="highlight25.jpg"></div>
+<div class="highlight"><img src="highlight26.jpg"></div>
+
+<div class="highlight"><img src="highlight27.jpg"></div>
+<div class="highlight"><img src="highlight28.jpg"></div>
+
+<div class="highlight"><img src="highlight29.jpg"></div>
+<div class="highlight"><img src="highlight30.jpg"></div>
+
+</div>
+
+</body>
+</html>
