@@ -16,16 +16,28 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 background:#050505;
 font-family:'Space Grotesk',sans-serif;
 overflow-x:hidden;
+color:white;
 }
 
 a{
 text-decoration:none;
 color:white;
+transition:.3s;
 }
+
+a:hover{
+opacity:.7;
+}
+
+/* NAVIGATION */
 
 nav{
 position:fixed;
@@ -35,15 +47,16 @@ width:100%;
 padding:2rem 4rem;
 display:flex;
 justify-content:space-between;
-z-index:100;
-background:rgba(5,5,5,.8);
-backdrop-filter:blur(10px);
+align-items:center;
+z-index:1000;
+background:rgba(5,5,5,.75);
+backdrop-filter:blur(12px);
 }
 
 .logo{
-color:white;
 font-size:1.4rem;
 font-weight:600;
+letter-spacing:2px;
 }
 
 .nav-links{
@@ -52,56 +65,106 @@ gap:2rem;
 }
 
 .nav-links a{
-color:white;
-font-size:.9rem;
+font-size:.85rem;
 letter-spacing:2px;
+text-transform:uppercase;
 }
 
+/* HERO */
+
 .hero{
-height:25vh;
+height:30vh;
 display:flex;
-align-items:end;
 justify-content:center;
+align-items:flex-end;
 padding-bottom:40px;
 }
 
 .hero h1{
-color:white;
-font-size:clamp(2rem,6vw,5rem);
-letter-spacing:4px;
+font-size:clamp(2.5rem,6vw,5rem);
+font-weight:500;
+letter-spacing:6px;
 }
 
+/* HIGHLIGHTS */
+
 .highlights-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
 width:100%;
 }
 
 .highlight{
-aspect-ratio:9/16;
-overflow:hidden;
 position:relative;
+width:100%;
+height:85vh;
+overflow:hidden;
+background:#000;
 }
 
-.highlight img{
+.highlight video{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.5s;
+transition:1s ease;
 }
 
-.highlight:hover img{
-transform:scale(1.05);
+.highlight:hover video{
+transform:scale(1.04);
 }
+
+.highlight::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+to top,
+rgba(0,0,0,.75),
+rgba(0,0,0,.15)
+);
+pointer-events:none;
+}
+
+.highlight-title{
+position:absolute;
+bottom:40px;
+left:40px;
+font-size:1rem;
+letter-spacing:4px;
+font-weight:500;
+z-index:2;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
-.highlights-grid{
-grid-template-columns:1fr;
-}
-
 nav{
 padding:1.5rem;
+}
+
+.nav-links{
+gap:1rem;
+}
+
+.nav-links a{
+font-size:.7rem;
+}
+
+.hero{
+height:20vh;
+}
+
+.hero h1{
+font-size:2rem;
+}
+
+.highlight{
+height:55vh;
+}
+
+.highlight-title{
+left:20px;
+bottom:20px;
+font-size:.8rem;
 }
 
 }
@@ -130,50 +193,56 @@ padding:1.5rem;
 
 <div class="highlights-grid">
 
-<div class="highlight"><img src="highlight1.jpg"></div>
-<div class="highlight"><img src="highlight2.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight1.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 01</div>
+</div>
 
-<div class="highlight"><img src="highlight3.jpg"></div>
-<div class="highlight"><img src="highlight4.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight2.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 02</div>
+</div>
 
-<div class="highlight"><img src="highlight5.jpg"></div>
-<div class="highlight"><img src="highlight6.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight3.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 03</div>
+</div>
 
-<div class="highlight"><img src="highlight7.jpg"></div>
-<div class="highlight"><img src="highlight8.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight4.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 04</div>
+</div>
 
-<div class="highlight"><img src="highlight9.jpg"></div>
-<div class="highlight"><img src="highlight10.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight5.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 05</div>
+</div>
 
-<div class="highlight"><img src="highlight11.jpg"></div>
-<div class="highlight"><img src="highlight12.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight6.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 06</div>
+</div>
 
-<div class="highlight"><img src="highlight13.jpg"></div>
-<div class="highlight"><img src="highlight14.jpg"></div>
+<div class="highlight">
+<video autoplay muted loop playsinline preload="metadata">
+<source src="highlight7.mp4" type="video/mp4">
+</video>
+<div class="highlight-title">HIGHLIGHT 07</div>
+</div>
 
-<div class="highlight"><img src="highlight15.jpg"></div>
-<div class="highlight"><img src="highlight16.jpg"></div>
-
-<div class="highlight"><img src="highlight17.jpg"></div>
-<div class="highlight"><img src="highlight18.jpg"></div>
-
-<div class="highlight"><img src="highlight19.jpg"></div>
-<div class="highlight"><img src="highlight20.jpg"></div>
-
-<div class="highlight"><img src="highlight21.jpg"></div>
-<div class="highlight"><img src="highlight22.jpg"></div>
-
-<div class="highlight"><img src="highlight23.jpg"></div>
-<div class="highlight"><img src="highlight24.jpg"></div>
-
-<div class="highlight"><img src="highlight25.jpg"></div>
-<div class="highlight"><img src="highlight26.jpg"></div>
-
-<div class="highlight"><img src="highlight27.jpg"></div>
-<div class="highlight"><img src="highlight28.jpg"></div>
-
-<div class="highlight"><img src="highlight29.jpg"></div>
-<div class="highlight"><img src="highlight30.jpg"></div>
+<!-- Duplicate this block up to highlight30.mp4 -->
 
 </div>
 
