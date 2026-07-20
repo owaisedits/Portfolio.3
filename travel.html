@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Travel Film | Malik Owais</title>
+<link href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap' rel='stylesheet'>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:#050505;color:#fff;font-family:'Space Grotesk',sans-serif}
+nav{position:fixed;top:0;width:100%;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,5,.7);backdrop-filter:blur(12px);z-index:1000}
+.logo{font-weight:700;letter-spacing:2px}.nav{display:flex;gap:2rem}.nav a{color:#fff;text-decoration:none;font-size:.85rem}
+.hero{position:relative;height:100vh;overflow:hidden}.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
+.heroText{position:absolute;left:8%;bottom:12%;z-index:2}.heroText h1{font-size:clamp(3rem,8vw,6rem);letter-spacing:6px}.heroText p{margin-top:12px;color:#ddd}
+.content{width:min(1300px,92%);margin:70px auto}.desc{max-width:800px;color:#bbb;line-height:1.7;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}.card video{width:100%;border-radius:18px;background:#111}.back{display:inline-block;margin-top:50px;padding:14px 22px;border:1px solid #666;border-radius:30px;color:#fff;text-decoration:none}
+@media(max-width:768px){nav{padding:1.3rem}.nav{gap:1rem}.nav a{font-size:.7rem}.heroText{left:6%;bottom:10%}}
+</style></head><body>
+<nav><div class='logo'>OM</div><div class='nav'><a href='index.html'>HOME</a><a href='index.html#work'>WORK</a><a href='highlights.html'>HIGHLIGHTS</a><a href='index.html#contact'>CONTACT</a></div></nav>
+<section class='hero'>
+<video autoplay muted loop playsinline><source src='travel-hero.mp4' type='video/mp4'></video>
+<div class='heroText'><h1>TRAVEL FILM</h1><p>A cinematic collection of color-graded travel imagery.</p></div>
+</section>
+<div class='content'>
+<div class='desc'>Explore a selection of travel film highlights showcasing cinematic color, natural light, atmosphere, and visual storytelling. Each clip represents a different moment from the project.</div>
+<div class='grid'>
+<div class='card'><video controls><source src='T1.mp4' type='video/mp4'></video></div>
+<div class='card'><video controls><source src='T2.mp4' type='video/mp4'></video></div>
+<div class='card'><video controls><source src='T3.mp4' type='video/mp4'></video></div>
+<div class='card'><video controls><source src='T4.mp4' type='video/mp4'></video></div>
+<div class='card'><video controls><source src='T5.mp4' type='video/mp4'></video></div>
+<div class='card'><video controls><source src='T6.mp4' type='video/mp4'></video></div>
+</div>
+<a class='back' href='highlights.html'>&larr; Back to Highlights</a>
+</div></body></html>
